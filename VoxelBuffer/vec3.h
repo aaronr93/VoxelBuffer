@@ -17,3 +17,9 @@ struct ivec3 {
 	int y;
 	int z;
 };
+
+struct voxel
+{
+	float density;
+	float light;
+};

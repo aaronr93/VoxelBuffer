@@ -13,12 +13,16 @@
 
 #include "vec3.h"
 #include <string>
+#include <vector>
 
 class VoxelBuffer {
 
 private:
 	//you'll want to add things here
-
+	float delta;
+	ivec3 dimensions;
+	std::vector<voxel> voxels;
+	
 public:
 	VoxelBuffer(float delta, const ivec3& dimensions);
 	~VoxelBuffer(void);

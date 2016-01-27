@@ -21,11 +21,11 @@ int runLineTests(void);
 
 int main(int argc, char** argv) {
 	cout << "***** Constructing Test Buffers *****" << endl;
-	subject1 = VoxelBuffer::factory("test1.txt");
+	subject1 = VoxelBuffer::factory("samples/test1.txt");
 	cout << "********  Buffer 1 Finished  ********" << endl;
-	subject2 = VoxelBuffer::factory("test2.txt");
+	subject2 = VoxelBuffer::factory("samples/test2.txt");
 	cout << "********  Buffer 2 Finished  ********" << endl;
-	subject3 = VoxelBuffer::factory("test3.txt");
+	subject3 = VoxelBuffer::factory("samples/test3.txt");
 	cout << "********  Buffer 3 Finished  ********\n\n";
 
 	cout << "***** Testing Total Density of Buffers *****" << endl;
@@ -299,7 +299,7 @@ int runTotalTests() {
 	}
 
 	float expected = 84828.000f;
-	result = total == expected;
+	bool result = total == expected;
 	cout << "Total density test1 " << (result ? "passed" : "failed") << endl;
 	correct += result;
 

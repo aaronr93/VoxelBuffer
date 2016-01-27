@@ -147,10 +147,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="driver.cpp" />
+    <ClCompile Include="VoxelBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vec3.h" />
     <ClInclude Include="VoxelBuffer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Samples\test1.txt" />
+    <Text Include="Samples\test2.txt" />
+    <Text Include="Samples\test3.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

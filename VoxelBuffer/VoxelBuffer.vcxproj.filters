@@ -18,6 +18,9 @@
     <ClCompile Include="driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VoxelBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VoxelBuffer.h">
@@ -26,5 +29,16 @@
     <ClInclude Include="vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Samples\test1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Samples\test2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Samples\test3.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
