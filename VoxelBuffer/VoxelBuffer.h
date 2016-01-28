@@ -21,8 +21,7 @@ private:
 	//you'll want to add things here
 	float delta;
 	ivec3 dimensions;
-	std::vector<voxel> voxels;
-	
+	voxel * voxels;
 public:
 	VoxelBuffer(float delta, const ivec3& dimensions);
 	~VoxelBuffer(void);
@@ -33,4 +32,6 @@ public:
 	vec3 getVoxelCenter(const vec3& coords) const;
 	vec3 getVoxelCenter(const ivec3& coords) const;
 	static VoxelBuffer* factory(const std::string& filename);
+	int getVoxelIndex(const vec3& coords) const;
+	int getVoxelIndex(const ivec3& coords) const;
 };
