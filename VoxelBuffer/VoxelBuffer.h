@@ -13,7 +13,6 @@
 
 #include "vec3.h"
 #include <string>
-#include <vector>
 
 class VoxelBuffer {
 
@@ -33,5 +32,5 @@ public:
 	vec3 getVoxelCenter(const ivec3& coords) const;
 	static VoxelBuffer* factory(const std::string& filename);
 	int getVoxelIndex(const vec3& coords) const;
-	int getVoxelIndex(const ivec3& coords) const;
+	int getDimensions(void) const;
 };

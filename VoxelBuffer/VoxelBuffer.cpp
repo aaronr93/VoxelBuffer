@@ -7,24 +7,24 @@ Due 1/29/16
 
 #include "VoxelBuffer.h"
 #include <fstream>
-#include <string>
 #include <math.h>
 using std::ifstream;
 using std::string;
-using std::vector;
 using std::atoi;
 using std::atof;
 
-VoxelBuffer::VoxelBuffer(float delta, const ivec3 & dimensions)
+VoxelBuffer::VoxelBuffer(float delta, const ivec3& dimensions)
 {
 	this->delta = delta;
 	this->dimensions = dimensions;
 }
 
 VoxelBuffer::~VoxelBuffer(void)
-{}
+{
+	//delete[] voxels;
+}
 
-int VoxelBuffer::getVoxelIndex(const vec3 & coords) const
+int VoxelBuffer::getVoxelIndex(const vec3& coords) const
 {
 	// width = dimensions.x
 	// height = dimensions.y
@@ -35,24 +35,18 @@ int VoxelBuffer::getVoxelIndex(const vec3 & coords) const
 	return (z * dimensions.x * dimensions.y) + (y * dimensions.x + x);
 }
 
-int VoxelBuffer::getVoxelIndex(const ivec3 & coords) const
+int VoxelBuffer::getDimensions(void) const
 {
-	// width = dimensions.x
-	// height = dimensions.y
-	float x, y, z;
-	x = floor(coords.x / delta);
-	y = floor(coords.y / delta);
-	z = floor(coords.z / delta);
-	return (z * dimensions.x * dimensions.y) + (y * dimensions.x + x);
+	return dimensions.x;
 }
 
-float VoxelBuffer::densityRead(const vec3 & coords) const
+float VoxelBuffer::densityRead(const vec3& coords) const
 {
 	int index = getVoxelIndex(coords);
 	return voxels[index].density;
 }
 
-float VoxelBuffer::lightRead(const vec3 & coords) const
+float VoxelBuffer::lightRead(const vec3& coords) const
 {
 	//int index = getVoxelIndex(coords);
 	//return voxels.at(index).density;
@@ -61,37 +55,37 @@ float VoxelBuffer::lightRead(const vec3 & coords) const
 	return -1.0f;
 }
 
-void VoxelBuffer::densityWrite(const vec3 & coords, float value)
+void VoxelBuffer::densityWrite(const vec3& coords, float value)
 {
 	int index = getVoxelIndex(coords);
 	voxels[index].density = value;
 }
 
-void VoxelBuffer::lightWrite(const vec3 & coords, float value)
+void VoxelBuffer::lightWrite(const vec3& coords, float value)
 {
 	int index = getVoxelIndex(coords);
 	voxels[index].light = value;
 }
-// epsilon value expressions
-vec3 VoxelBuffer::getVoxelCenter(const vec3 & coords) const
+
+vec3 VoxelBuffer::getVoxelCenter(const vec3& coords) const
 {
 	vec3 retval;
-	retval.x = floor(coords.x * delta) + (delta / 2);
-	retval.y = floor(coords.y * delta) + (delta / 2);
-	retval.z = floor(coords.z * delta) + (delta / 2);
+	retval.x = coords.x * delta + (delta / 2.0f);
+	retval.y = coords.y * delta + (delta / 2.0f);
+	retval.z = coords.z * delta + (delta / 2.0f);
 	return retval;
 }
 
-vec3 VoxelBuffer::getVoxelCenter(const ivec3 & coords) const
+vec3 VoxelBuffer::getVoxelCenter(const ivec3& coords) const
 {
 	vec3 retval;
-	retval.x = floor(coords.x * delta) + (delta / 2);
-	retval.y = floor(coords.y * delta) + (delta / 2);
-	retval.z = floor(coords.z * delta) + (delta / 2);
+	retval.x = coords.x * delta + (delta / 2.0f);
+	retval.y = coords.y * delta + (delta / 2.0f);
+	retval.z = coords.z * delta + (delta / 2.0f);
 	return retval;
 }
 
-VoxelBuffer * VoxelBuffer::factory(const std::string & filename)
+VoxelBuffer * VoxelBuffer::factory(const string& filename)
 {
 	ifstream fin(filename);
 	string inputBuffer;
